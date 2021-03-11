@@ -1,7 +1,11 @@
 <template>
   <div>
-    <!-- Try to make a background shadow when the dropdown is open -->
-    <!-- <div v-if="isDropdownOpen" class="fixed bg-black"></div> -->
+    <!-- click out to close the dropdown -->
+    <div
+      v-if="isDropdownOpen"
+      @click="isDropdownOpen = false"
+      class="z-10 fixed w-full h-full left-0 top-0"
+    ></div>
     <nav class="navbar">
       <!-- navbar flex items -->
       <div class="navbar__left">
@@ -26,7 +30,7 @@
               type="button"
               class="navbar__user"
               id="user-menu"
-              aria-expanded="false"
+              :aria-expanded="isDropdownOpen"
               aria-haspopup="true"
               @click="isDropdownOpen = !isDropdownOpen"
             >
@@ -90,7 +94,8 @@ export default {
 
 <style lang="postcss">
 .navbar {
-  @apply bg-blue-700 rounded-md mx-auto px-8;
+  background-color: #1e1add;
+  @apply rounded-md mx-auto px-8 py-1;
 }
 .navbar__left {
   @apply relative flex items-center justify-between h-16;
@@ -99,22 +104,22 @@ export default {
   @apply flex-1 flex items-stretch justify-start pl-6;
 }
 .navbar__items--logo {
-  @apply flex-shrink-0 flex items-center text-white text-2xl mr-16 uppercase font-bold;
+  @apply flex-shrink-0 flex items-center text-white text-xl leading-3 mr-16 uppercase font-bold transform scale-125;
 }
 .navbar__items--list {
   @apply flex space-x-12 items-center justify-items-center justify-center;
 }
 .navbar__items--menu {
-  @apply text-white px-3 py-2 text-base font-medium;
+  @apply text-white px-3 py-2 font-medium text-base leading-5;
 }
 .navbar__right {
-  @apply absolute inset-y-0 right-0 flex items-center pr-6;
+  @apply absolute inset-y-0 right-0 flex items-center pr-0;
 }
 .navbar__user {
   @apply bg-white flex text-sm rounded-full border border-white focus:outline-none focus:ring-offset-0;
 }
 .navbar__user-pic {
-  @apply h-9 w-9 rounded-full flex items-center;
+  @apply h-10 w-10 rounded-full flex items-center;
 }
 .dropdown {
   @apply origin-top-right cursor-pointer absolute right-0 mt-2 w-56 rounded shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none border-gray-200 border-2;

@@ -1,8 +1,8 @@
 <template>
   <tr>
-    <td class="px-6 py-4 whitespace-nowrap">
-      <div class="flex items-center">
-        <div class="flex-shrink-0 h-10 w-10">
+    <td class="table__whitespace">
+      <div class="table__employee">
+        <div class="table__employee-pic">
           <img
             class="h-9 w-9 rounded-full"
             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
@@ -10,33 +10,30 @@
           />
         </div>
         <div class="ml-4">
-          <div class="text-sm font-medium text-gray-900">{{ userName }}</div>
-          <div class="text-xs text-gray-500">{{ email }}</div>
+          <div class="font-medium custom-text--1">{{ userName }}</div>
+          <div class="custom-text--2">{{ email }}</div>
         </div>
       </div>
     </td>
     <!-- Date reference https://css-tricks.com/everything-you-need-to-know-about-date-in-javascript/ -->
-    <td class="px-6 py-4 whitespace-nowrap">
-      <div class="text-xs text-gray-900">
+    <td class="table__whitespace">
+      <div class="custom-text--1">
         {{ lastLogin }}
       </div>
-      <div class="text-xs text-gray-500">{{ timeAgo }}</div>
+      <div class="custom-text--2">{{ timeAgo }}</div>
     </td>
-    <td class="px-6 py-4 whitespace-nowrap text-xs text-gray-800">
+    <td class="table__whitespace custom-text--1">
       {{ department }}
     </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-      <span
-        class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full"
-        :class="userStatus"
-      >
+    <td class="table__whitespace">
+      <span class="table__employee-status" :class="userStatus">
         {{ textStatus }}
       </span>
     </td>
-    <td class="px-6 py-4 whitespace-nowrap">
-      <div class="flex items-center justify-center">
+    <td class="table__whitespace">
+      <div class="table__arrow-svg">
         <a href="#" class="text-gray-500">
-          <svg class="w-4 h-4 fill-current">
+          <svg class="w-5 h-5 fill-current">
             <use
               xlink:href="../assets/symbol-defs.svg#icon-keyboard_arrow_down"
             ></use>
@@ -49,6 +46,11 @@
 
 <script>
 export default {
+  data() {
+    return {
+      picUrl: "",
+    };
+  },
   props: [
     "department",
     "email",
@@ -80,7 +82,7 @@ export default {
       let array = [
         new Date(date[0]).getTime(),
         new Date(date[1]).getTime(),
-        new Date(date[2]).getTime()
+        new Date(date[2]).getTime(),
       ];
       let max = 0;
       for (let i = 0; i < array.length; i++) {
@@ -116,13 +118,13 @@ export default {
 
         // If the diff is less then milliseconds in a Month
       } else if (diff < ms_Mon) {
-        return  Math.round(diff / ms_Day) + " days ago";
+        return Math.round(diff / ms_Day) + " days ago";
 
         // If the diff is less then milliseconds in a year
       } else if (diff < ms_Yr) {
-        return  Math.round(diff / ms_Mon) + " months ago";
+        return Math.round(diff / ms_Mon) + " months ago";
       } else {
-        return  Math.round(diff / ms_Yr) + " years ago";
+        return Math.round(diff / ms_Yr) + " years ago";
       }
     },
     getFullMonth(monthIndex) {
@@ -158,5 +160,26 @@ export default {
 };
 </script>
 
-<style>
+<style lang="postcss">
+.table__whitespace {
+  @apply px-6 py-4 whitespace-nowrap;
+}
+.custom-text--1 {
+  @apply text-sm text-gray-900;
+}
+.custom-text--2 {
+  @apply text-sm text-gray-500;
+}
+.table__employee {
+  @apply flex items-center;
+}
+.table__employee-pic {
+  @apply flex-shrink-0 h-9 w-9;
+}
+.table__employee-status {
+  @apply inline-flex text-sm leading-5 font-semibold;
+}
+.table__arrow-svg {
+  @apply flex items-center justify-center;
+}
 </style>

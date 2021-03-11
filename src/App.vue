@@ -40,6 +40,7 @@ export default {
     // Users
     const userResponse = await fetch("/api/users");
     this.users = await userResponse.json();
+    console.log(this.users);
 
     // Reports
     const reportResponse = await fetch("/api/reports");
@@ -55,17 +56,17 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 .sub-navbar {
-  @apply text-gray-500 font-medium tracking-wide relative inset-6;
+  @apply text-gray-500 font-semibold tracking-wide relative inset-6;
 }
 .main {
-  @apply flex  space-x-10 md:flex-wrap md:space-x-0;
+  @apply flex  space-x-10 md:flex-wrap md:space-x-0 pt-12 ;
 }
 
 .chart {
-  @apply flex-auto max-w-md pt-12 h-full md:max-w-xs;
+  @apply flex-1 max-w-md h-full md:max-w-xs;
 }
 .table {
-  @apply flex-1 max-w-full pt-12 h-full md:max-w-sm;
+  @apply flex-1 max-w-full h-full md:max-w-sm;
 }
 
 html,
@@ -76,5 +77,6 @@ body,
   margin: 0;
   overflow: auto;
   font-family: Inter, sans-serif;
+  background-color: #f7fafc;
 }
 </style>

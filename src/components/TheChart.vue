@@ -1,21 +1,23 @@
 <template>
-  <div class="bg-white rounded-md shadow-lg">
-    <div class="relative top-6 left-6 mb-16">
-      <h1 class="text-gray-600 text-xl">Why do you create a startup?</h1>
+  <div class="chart-box">
+    <div class="chart__text">
+      <h1 class="chart__title">Why do you create a startup?</h1>
       <span class="text-gray-400">Trends</span>
     </div>
-    <vue-frappe
-      v-if="hasReports !== false"
-      class="items-center justify-center"
-      id="chart"
-      :labels="hasReports"
-      type="pie"
-      :height="400"
-      :colors="['#e289f2', '#855cf8', '#b085ff', '#503795']"
-      :dataSets="this.getData()"
-      :tooltipOptions="{}"
-      :valuesOverPoints="true"
-    ></vue-frappe>
+    <div class="chart__pie">
+      <vue-frappe
+        class="w-full"
+        v-if="hasReports !== false"
+        id="chart"
+        :labels="hasReports"
+        type="pie"
+        :height="384"
+        :colors="['#e289f2', '#855cf8', '#b085ff', '#503795']"
+        :dataSets="this.getData()"
+        :tooltipOptions="{}"
+        :valuesOverPoints="true"
+      ></vue-frappe>
+    </div>
   </div>
 </template>
 
@@ -64,5 +66,17 @@ export default {
   },
 };
 </script>
-<style>
+<style lang="postcss">
+.chart-box {
+  @apply bg-white rounded-md pb-8 shadow-lg;
+}
+.chart__text {
+  @apply relative top-6 left-6 mb-16;
+}
+.chart__title {
+  @apply text-gray-600 text-xl;
+}
+.chart__pie {
+  @apply flex items-center justify-center flex-grow flex-shrink rounded-md pb-2;
+}
 </style>

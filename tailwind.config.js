@@ -1,7 +1,7 @@
 // tailwind.config.js
 module.exports = {
     purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-    darkMode: false,
+    darkMode: "media",
     theme: {
         screens: {
             '2xl': { 'max': '1535px' },

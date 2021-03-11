@@ -13,7 +13,7 @@ export function makeServer({ environment = "development" } = {}) {
         factories: {
             user: Factory.extend({
                 profile_img() {
-                    // this returns a private url, check out: 
+                    // this returns a private url, check out this: 
                     // https://github.com/Marak/faker.js/issues/1046
                     return  faker.image.avatar();
                 },

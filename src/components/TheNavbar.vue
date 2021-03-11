@@ -6,7 +6,7 @@
         <div class="relative flex items-center justify-between h-16">
           <!-- left navbar -->
           <div
-            class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start"
+            class="flex-1 flex items-stretch justify-start pl-6"
           >
             <div class="flex-shrink-0 flex items-center">
               <h1 class="text-white text-2xl mr-16 uppercase font-bold">
@@ -32,7 +32,7 @@
           </div>
           <!-- right navbar -->
           <div
-            class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
+            class="absolute inset-y-0 right-0 flex items-center pr-6"
           >
             <!-- Profile dropdown -->
             <div class="ml-3 relative">

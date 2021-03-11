@@ -4,19 +4,18 @@
       <h1 class="text-gray-600 text-xl">Why do you create a startup?</h1>
       <span class="text-gray-400">Trends</span>
     </div>
-    <div v-if="reports.reports !== undefined">
-      <vue-frappe
-        class="items-center justify-center"
-        id="chart"
-        :labels="labels"
-        type="pie"
-        :height="400"
-        :colors="['#e289f2', '#855cf8', '#b085ff', '#503795']"
-        :dataSets="this.data"
-        :tooltipOptions="{}"
-        :valuesOverPoints="true"
-      ></vue-frappe>
-    </div>
+    <vue-frappe
+      v-if="hasReports !== false"
+      class="items-center justify-center"
+      id="chart"
+      :labels="hasReports"
+      type="pie"
+      :height="400"
+      :colors="['#e289f2', '#855cf8', '#b085ff', '#503795']"
+      :dataSets="this.getData()"
+      :tooltipOptions="{}"
+      :valuesOverPoints="true"
+    ></vue-frappe>
   </div>
 </template>
 
@@ -28,34 +27,42 @@ export default {
   components: {
     VueFrappe,
   },
-  created() {
-    // console.log(this.reports.reports[0].category);
+  computed: {
+    hasReports() {
+      return this.reports.reports !== undefined ? this.getLabels() : false;
+    },
   },
-  data() {
-    return {
-      data: [
-        {
-          name: "Some Data",
-          chartType: "bar",
-          values: [96678, 25177, 88029, 79003],
-        },
-      ],
-      labels: [
+  methods: {
+    getLabels() {
+      const labels = [
         this.reports.reports[0].category,
         this.reports.reports[1].category,
         this.reports.reports[2].category,
         this.reports.reports[3].category,
-      ],
-    };
+      ];
+      return labels;
+    },
+    getData() {
+      const data = [
+        {
+          name: "Some Data",
+          chartType: "bar",
+          values: this.getValues(),
+        },
+      ];
+      return data;
+    },
+    getValues() {
+      const values = [
+        this.reports.reports[0].total,
+        this.reports.reports[1].total,
+        this.reports.reports[2].total,
+        this.reports.reports[3].total,
+      ];
+      return values;
+    },
   },
 };
-/* 
-0: {category: "DUNNO", total: 96678, id: "1"}
-1: {category: "I'm boring", total: 25177, id: "2"}
-2: {category: "Money", total: 88029, id: "3"}
-3: {category: "Fun", total: 79003, id: "4"}
-*/
 </script>
-
 <style>
 </style>

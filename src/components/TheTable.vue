@@ -2,7 +2,7 @@
   <div class="bg-white px-6 pb-10 rounded-md shadow-lg">
     <h2 class="pb-4 pt-6 text-gray-600 text-xl">Employees</h2>
     <div class="flex flex-col">
-      <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="-my-2 overflow-x-auto -mx-8">
         <div class="py-2 align-middle inline-block min-w-full px-6">
           <div class="overflow-hidden border border-gray-200 rounded-lg sm:rounded-none">
             <table class="min-w-full divide-y divide-gray-200">

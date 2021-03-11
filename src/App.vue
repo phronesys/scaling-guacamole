@@ -67,7 +67,7 @@ export default {
   @apply flex-auto max-w-md pt-12 h-full md:max-w-xs;
 }
 .table {
-  @apply flex-1 max-w-4xl pt-12 h-full md:max-w-sm;
+  @apply flex-1 max-w-full pt-12 h-full md:max-w-sm;
 }
 
 html,

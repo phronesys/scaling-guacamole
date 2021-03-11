@@ -40,12 +40,10 @@ export default {
     // Users
     const userResponse = await fetch("/api/users");
     this.users = await userResponse.json();
-    console.log(this.users.users[0]);
 
     // Reports
     const reportResponse = await fetch("/api/reports");
     this.reports = await reportResponse.json();
-    // console.log(this.reports.reports[0]);
   },
 };
 </script>
@@ -60,7 +58,7 @@ export default {
   @apply text-gray-500 font-medium tracking-wide relative inset-6;
 }
 .main {
-  @apply flex  space-x-10 md:flex-wrap md:space-x-0; 
+  @apply flex  space-x-10 md:flex-wrap md:space-x-0;
 }
 
 .chart {

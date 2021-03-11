@@ -8,10 +8,10 @@
 
     <section class="main">
       <div class="chart">
-        <the-chart></the-chart>
+        <the-chart :reports="reports"></the-chart>
       </div>
       <div class="table">
-        <the-table></the-table>
+        <the-table :users="users"></the-table>
       </div>
     </section>
   </div>
@@ -27,6 +27,8 @@ export default {
   data() {
     return {
       uwu: "",
+      users: {},
+      reports: {},
     };
   },
   components: {
@@ -37,12 +39,13 @@ export default {
   async mounted() {
     // Users
     const userResponse = await fetch("/api/users");
-    const users = await userResponse.json();
-    console.log(users.users[0]);
+    this.users = await userResponse.json();
+    console.log(this.users.users[0]);
+
     // Reports
     const reportResponse = await fetch("/api/reports");
-    const reports = await reportResponse.json();
-    console.log(reports.reports[0]);
+    this.reports = await reportResponse.json();
+    // console.log(this.reports.reports[0]);
   },
 };
 </script>
@@ -57,14 +60,14 @@ export default {
   @apply text-gray-500 font-medium tracking-wide relative inset-6;
 }
 .main {
-  @apply flex  space-x-10 flex-wrap; 
+  @apply flex  space-x-10 md:flex-wrap md:space-x-0; 
 }
 
 .chart {
-  @apply flex-1 max-w-xl pt-12 h-full;
+  @apply flex-auto max-w-md pt-12 h-full md:max-w-xs;
 }
 .table {
-  @apply flex-1 max-w-full pt-12 h-full;
+  @apply flex-1 max-w-4xl pt-12 h-full md:max-w-sm;
 }
 
 html,

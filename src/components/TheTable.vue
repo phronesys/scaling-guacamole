@@ -1,16 +1,37 @@
 <template>
   <div class="component__table">
-    <h2 class="table__title">Employees</h2>
+    <h2 class="table__title">
+      Employees
+    </h2>
     <div class="table__container">
       <div class="table__content">
         <table class="table__table">
           <thead class="table__thead">
             <tr>
-              <th scope="col" class="column__title pl-3">Employee</th>
-              <th scope="col" class="column__title">Last login</th>
-              <th scope="col" class="column__title">Department</th>
-              <th scope="col" class="column__title">Status</th>
-              
+              <th
+                scope="col"
+                class="column__title pl-3"
+              >
+                Employee
+              </th>
+              <th
+                scope="col"
+                class="column__title"
+              >
+                Last login
+              </th>
+              <th
+                scope="col"
+                class="column__title"
+              >
+                Department
+              </th>
+              <th
+                scope="col"
+                class="column__title"
+              >
+                Status
+              </th>
             </tr>
           </thead>
           <tbody class="rows">
@@ -20,12 +41,12 @@
                 :key="user.id"
                 :department="user.department"
                 :email="user.email"
-                :firstName="user.first_name"
-                :lastName="user.last_name"
+                :first-name="user.first_name"
+                :last-name="user.last_name"
                 :picture="user.profile_img"
                 :sessions="user.sessions"
                 :status="user.status"
-              ></table-user>
+              />
             </template>
           </tbody>
         </table>
@@ -41,12 +62,22 @@ export default {
     TableUser,
   },
   props: {
-    users: Object,
+    users: {
+      type: Object,
+      default: function () {
+        return {
+          message: "",
+        };
+      },
+    },
   },
 };
 </script>
 
 <style lang="postcss" >
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .component__table {
   @apply px-6 pb-10 rounded-md shadow-lg bg-white dark:bg-gray-800;
 }
@@ -57,7 +88,7 @@ export default {
   @apply divide-y divide-gray-200 bg-white dark:bg-gray-900 dark:divide-gray-600;
 }
 .table__title {
-  @apply pb-4 pt-6 text-xl text-gray-600 dark:text-indigo-200;
+  @apply pb-4 pt-6 text-xl text-gray-600 dark:text-indigo-300;
 }
 .table__container {
   @apply flex flex-col px-6 -mx-8 py-2 -my-2 min-w-full overflow-x-auto align-middle;
@@ -71,5 +102,4 @@ export default {
 .table__thead {
   @apply leading-10 max-h-10 bg-white dark:bg-black;
 }
-
 </style>

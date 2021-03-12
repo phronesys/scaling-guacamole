@@ -1,17 +1,23 @@
 <template>
-  <div id="app" class="p-10">
-    <the-navbar></the-navbar>
+  <div
+    id="app"
+    class="p-10"
+  >
+    <the-navbar />
     <div class="sub-navbar">
       <a href="#">Home</a> /
-      <a href="#" class="underline">Reports & Insights</a>
+      <a
+        href="#"
+        class="underline"
+      >Reports & Insights</a>
     </div>
 
     <section class="main">
       <div class="chart">
-        <the-chart :reports="reports"></the-chart>
+        <the-chart :reports="reports" />
       </div>
       <div class="table">
-        <the-table :users="users"></the-table>
+        <the-table :users="users" />
       </div>
     </section>
   </div>
@@ -23,18 +29,18 @@ import TheChart from "./components/TheChart";
 import TheTable from "./components/TheTable";
 
 export default {
-  name: "app",
+  name: "App",
+  components: {
+    TheNavbar,
+    TheChart,
+    TheTable,
+  },
   data() {
     return {
       uwu: "",
       users: {},
       reports: {},
     };
-  },
-  components: {
-    TheNavbar,
-    TheChart,
-    TheTable,
   },
   async mounted() {
     // Users

@@ -1,22 +1,24 @@
 <template>
   <div class="chart-box">
     <div class="chart__text">
-      <h1 class="chart__title">Why do you create a startup?</h1>
+      <h1 class="chart__title">
+        Why do you create a startup?
+      </h1>
       <span class="text-gray-400">Trends</span>
     </div>
     <div class="chart__pie">
       <vue-frappe
-        class="w-full"
         v-if="hasReports !== false"
         id="chart"
+        class="w-full"
         :labels="hasReports"
         type="pie"
         :height="384"
         :colors="['#e289f2', '#855cf8', '#b085ff', '#503795']"
-        :dataSets="this.getData()"
-        :tooltipOptions="{}"
-        :valuesOverPoints="true"
-      ></vue-frappe>
+        :data-sets="getData()"
+        :tooltip-options="{}"
+        :values-over-points="true"
+      />
     </div>
   </div>
 </template>
@@ -25,9 +27,16 @@
 import { VueFrappe } from "vue2-frappe";
 
 export default {
-  props: ["reports"],
   components: {
     VueFrappe,
+  },
+  props: {
+    reports: {
+      type: Object,
+      default: function () {
+        return { message: "error in reports prop in TheChart.vue" };
+      },
+    },
   },
   computed: {
     hasReports() {
@@ -67,6 +76,10 @@ export default {
 };
 </script>
 <style lang="postcss">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .chart-box {
   @apply 2xl:pb-4 rounded-md shadow-lg bg-white dark:bg-gray-900;
 }
@@ -74,7 +87,7 @@ export default {
   @apply relative top-6 left-6 mb-3 2xl:mb-16;
 }
 .chart__title {
-  @apply text-xl text-gray-600 dark:text-indigo-200;
+  @apply text-xl text-gray-600 dark:text-indigo-300;
 }
 .chart__pie {
   @apply flex items-center justify-center flex-grow flex-shrink rounded-md pb-2;

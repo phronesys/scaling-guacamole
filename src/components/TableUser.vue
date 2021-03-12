@@ -7,11 +7,15 @@
             class="table__employee-img"
             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
             alt=""
-          />
+          >
         </div>
         <div class="ml-4">
-          <div class="font-medium custom-text--1">{{ userName }}</div>
-          <div class="custom-text--2">{{ email }}</div>
+          <div class="font-medium custom-text--1">
+            {{ userName }}
+          </div>
+          <div class="custom-text--2">
+            {{ email }}
+          </div>
         </div>
       </div>
     </td>
@@ -20,23 +24,31 @@
       <div class="custom-text--1">
         {{ lastLogin }}
       </div>
-      <div class="custom-text--2">{{ timeAgo }}</div>
+      <div class="custom-text--2">
+        {{ timeAgo }}
+      </div>
     </td>
     <td class="table__whitespace custom-text--1">
       {{ department }}
     </td>
     <td class="table__whitespace">
-      <span class="table__employee-status" :class="userStatus">
+      <span
+        class="table__employee-status"
+        :class="userStatus"
+      >
         {{ textStatus }}
       </span>
     </td>
     <td class="table__whitespace">
       <div class="table__arrow-svg">
-        <a href="#" class="text-gray-500 dark:text-indigo-600">
+        <a
+          href="#"
+          class="text-gray-500 dark:text-indigo-600"
+        >
           <svg class="w-5 h-5 fill-current">
             <use
               xlink:href="../assets/symbol-defs.svg#icon-keyboard_arrow_down"
-            ></use>
+            />
           </svg>
         </a>
       </div>
@@ -46,20 +58,69 @@
 
 <script>
 export default {
+  props: {
+    department: {
+      type: String,
+      default: function () {
+        return {
+          message: "",
+        };
+      },
+    },
+    email: {
+      type: String,
+      default: function () {
+        return {
+          message: "",
+        };
+      },
+    },
+    firstName: {
+      type: String,
+      default: function () {
+        return {
+          message: "",
+        };
+      },
+    },
+    lastName: {
+      type: String,
+      default: function () {
+        return {
+          message: "",
+        };
+      },
+    },
+    picture: {
+      type: String,
+      default: function () {
+        return {
+          message: "",
+        };
+      },
+    },
+    sessions: {
+      type: Array,
+      default: function () {
+        return {
+          message: "",
+        };
+      },
+    },
+    status: {
+      type: String,
+      default: function () {
+        return {
+          message: "",
+        };
+      },
+    },
+  },
   data() {
     return {
       picUrl: "",
     };
   },
-  props: [
-    "department",
-    "email",
-    "firstName",
-    "lastName",
-    "picture",
-    "sessions",
-    "status",
-  ],
   computed: {
     userName() {
       return this.firstName + " " + this.lastName;
@@ -161,6 +222,9 @@ export default {
 </script>
 
 <style lang="postcss">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .table__whitespace {
   @apply px-2 py-3 2xl:px-6 2xl:py-4 whitespace-nowrap;
 }
@@ -201,7 +265,7 @@ export default {
     }
     .custom-text-tiny {
       font-size: 0.7rem;
-      line-height: .8rem;
+      line-height: 0.8rem;
     }
   }
   @variants dark {

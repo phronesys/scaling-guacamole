@@ -3,22 +3,36 @@
     <!-- click out to close the dropdown -->
     <div
       v-if="isDropdownOpen"
-      @click="isDropdownOpen = false"
       class="z-10 fixed w-full h-full left-0 top-0"
-    ></div>
+      @click="isDropdownOpen = false"
+    />
     <nav class="navbar">
       <!-- navbar flex items -->
       <div class="navbar__left">
         <!-- left navbar -->
         <div class="navbar__items">
           <div class="navbar__items--logo">
-            <h1 class="">Logo</h1>
+            <h1 class="">
+              Logo
+            </h1>
           </div>
           <div class="navbar__items--list">
-            <a href="#" class="navbar__items--menu">Menu</a>
-            <a href="#" class="navbar__items--menu">Menu</a>
-            <a href="#" class="navbar__items--menu">Menu</a>
-            <a href="#" class="navbar__items--menu">Menu</a>
+            <a
+              href="#"
+              class="navbar__items--menu"
+            >Menu</a>
+            <a
+              href="#"
+              class="navbar__items--menu"
+            >Menu</a>
+            <a
+              href="#"
+              class="navbar__items--menu"
+            >Menu</a>
+            <a
+              href="#"
+              class="navbar__items--menu"
+            >Menu</a>
           </div>
         </div>
         <!-- right navbar -->
@@ -27,9 +41,9 @@
           <div>
             <!-- button picture -->
             <button
+              id="user-menu"
               type="button"
               class="navbar__user"
-              id="user-menu"
               :aria-expanded="isDropdownOpen"
               aria-haspopup="true"
               @click="isDropdownOpen = !isDropdownOpen"
@@ -38,41 +52,53 @@
                 class="navbar__user-pic"
                 src="../assets/profile-pic.jpg"
                 alt=""
-              />
+              >
             </button>
             <!-- the dropdown -->
             <div
+              v-if="isDropdownOpen"
               class="dropdown"
               role="menu"
               aria-orientation="vertical"
               aria-labelledby="user-menu"
-              v-if="isDropdownOpen"
             >
-              <div role="menuitem" class="dropdown__item-1">
+              <div
+                role="menuitem"
+                class="dropdown__item-1"
+              >
                 <span class="dropdown__item-1--icon">
                   <svg class="dropdown__item-1--svg">
                     <use
                       xlink:href="../assets/symbol-defs.svg#icon-user-solid-circle"
-                    ></use>
+                    />
                   </svg>
                 </span>
                 <div class="dropdown__profile">
-                  <a href="#" class="dropdown__profile-title">My Profile</a>
-                  <span class="dropdown__profile-sub"
-                    >Change settings of your account.</span
-                  >
+                  <a
+                    href="#"
+                    class="dropdown__profile-title"
+                  >My Profile</a>
+                  <span
+                    class="dropdown__profile-sub"
+                  >Change settings of your account.</span>
                 </div>
               </div>
 
-              <div role="menuitem" class="dropdown__item-2">
+              <div
+                role="menuitem"
+                class="dropdown__item-2"
+              >
                 <span class="dropdown__item-2--icon">
                   <svg class="w-5 h-5 fill-current">
                     <use
                       xlink:href="../assets/symbol-defs.svg#icon-logout"
-                    ></use>
+                    />
                   </svg>
                 </span>
-                <a href="#" class="dropdown__logout">Logout</a>
+                <a
+                  href="#"
+                  class="dropdown__logout"
+                >Logout</a>
               </div>
             </div>
           </div>
@@ -93,6 +119,9 @@ export default {
 </script>
 
 <style lang="postcss">
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .navbar {
   background-color: #1e1add;
   @apply rounded-md mx-auto px-8 py-1 dark:bg-gray-900;

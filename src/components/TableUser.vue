@@ -5,7 +5,7 @@
         <div class="table__employee-pic">
           <img
             class="table__employee-img"
-            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
+            :src="picture"
             alt=""
           >
         </div>
@@ -114,11 +114,6 @@ export default {
       },
     },
   },
-  data() {
-    return {
-      picUrl: "",
-    };
-  },
   computed: {
     userName() {
       return this.firstName + " " + this.lastName;
@@ -220,9 +215,6 @@ export default {
 </script>
 
 <style lang="postcss">
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 .table__whitespace {
   @apply px-2 py-3 2xl:px-6 2xl:py-4 whitespace-nowrap;
 }

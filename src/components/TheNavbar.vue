@@ -119,9 +119,6 @@ export default {
 </script>
 
 <style lang="postcss">
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 .navbar {
   background-color: #1e1add;
   @apply rounded-md mx-auto px-8 py-1 dark:bg-gray-900;

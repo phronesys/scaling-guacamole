@@ -76,9 +76,6 @@ export default {
 };
 </script>
 <style lang="postcss">
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
 .chart-box {
   @apply 2xl:pb-4 rounded-md shadow-lg bg-white dark:bg-gray-900;

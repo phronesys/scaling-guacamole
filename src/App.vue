@@ -11,7 +11,6 @@
         class="underline"
       >Reports & Insights</a>
     </div>
-
     <section class="main">
       <div class="chart">
         <the-chart :reports="reports" />
@@ -55,9 +54,6 @@ export default {
 </script>
 
 <style lang="postcss">
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 @import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
 
 .sub-navbar {

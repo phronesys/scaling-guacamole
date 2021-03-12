@@ -75,9 +75,6 @@ export default {
 </script>
 
 <style lang="postcss" >
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 .component__table {
   @apply px-6 pb-10 rounded-md shadow-lg bg-white dark:bg-gray-800;
 }

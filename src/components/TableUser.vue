@@ -108,11 +108,9 @@ export default {
       },
     },
     status: {
-      type: String,
+      type: Boolean,
       default: function () {
-        return {
-          message: "",
-        };
+        return false;
       },
     },
   },

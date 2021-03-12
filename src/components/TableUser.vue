@@ -4,7 +4,7 @@
       <div class="table__employee">
         <div class="table__employee-pic">
           <img
-            class="h-9 w-9 rounded-full"
+            class="table__employee-img"
             src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60"
             alt=""
           />
@@ -32,7 +32,7 @@
     </td>
     <td class="table__whitespace">
       <div class="table__arrow-svg">
-        <a href="#" class="text-gray-500">
+        <a href="#" class="text-gray-500 dark:text-indigo-600">
           <svg class="w-5 h-5 fill-current">
             <use
               xlink:href="../assets/symbol-defs.svg#icon-keyboard_arrow_down"
@@ -65,7 +65,7 @@ export default {
       return this.firstName + " " + this.lastName;
     },
     userStatus() {
-      return this.status ? "text-green-400" : "text-red-400";
+      return this.status ? "custom-text-green" : "custom-text-red";
     },
     textStatus() {
       return this.status ? "Active" : "Inactive";
@@ -162,24 +162,55 @@ export default {
 
 <style lang="postcss">
 .table__whitespace {
-  @apply px-6 py-4 whitespace-nowrap;
+  @apply px-2 py-3 2xl:px-6 2xl:py-4 whitespace-nowrap;
 }
 .custom-text--1 {
-  @apply text-sm text-gray-900;
+  @apply custom-text-xxs override-text-to-sm text-gray-900 dark:text-indigo-200;
 }
 .custom-text--2 {
-  @apply text-sm text-gray-500;
+  @apply custom-text-tiny override-text-to-xs text-gray-500 dark:text-gray-400;
 }
 .table__employee {
   @apply flex items-center;
 }
 .table__employee-pic {
-  @apply flex-shrink-0 h-9 w-9;
+  @apply flex-shrink-0 ml-1 h-5 w-5 2xl:h-9 2xl:w-9;
+}
+.table__employee-img {
+  @apply h-5 w-5 2xl:h-9 2xl:w-9 rounded-full;
 }
 .table__employee-status {
-  @apply inline-flex text-sm leading-5 font-semibold;
+  @apply inline-flex custom-text-tiny override-text-to-sm leading-5 font-semibold;
 }
 .table__arrow-svg {
   @apply flex items-center justify-center;
+}
+
+/*  without this custom-text-xxs won't get override by 2xl:text-sm */
+.override-text-to-sm {
+  @apply 2xl:text-sm !important;
+}
+.override-text-to-xs {
+  @apply 2xl:text-xs !important;
+}
+@layer utilities {
+  @variants responsive {
+    .custom-text-xxs {
+      font-size: 0.8rem;
+      line-height: 1rem;
+    }
+    .custom-text-tiny {
+      font-size: 0.7rem;
+      line-height: .8rem;
+    }
+  }
+  @variants dark {
+  }
+  .custom-text-red {
+    color: #f03738;
+  }
+  .custom-text-green {
+    color: #54c953;
+  }
 }
 </style>

@@ -40,7 +40,7 @@ export function makeServer({ environment = "development" } = {}) {
 
         seeds(server) {
 
-            server.createList('user', 10);
+            server.createList('user', 5);
 
             server.create('report', { category: 'DUNNO', total: faker.random.number() });
             server.create('report', { category: 'I\'m boring', total: faker.random.number() });

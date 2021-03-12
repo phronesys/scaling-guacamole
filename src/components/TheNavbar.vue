@@ -50,7 +50,7 @@
             >
               <div role="menuitem" class="dropdown__item-1">
                 <span class="dropdown__item-1--icon">
-                  <svg class="w-5 h-5 fill-current">
+                  <svg class="dropdown__item-1--svg">
                     <use
                       xlink:href="../assets/symbol-defs.svg#icon-user-solid-circle"
                     ></use>
@@ -95,7 +95,7 @@ export default {
 <style lang="postcss">
 .navbar {
   background-color: #1e1add;
-  @apply rounded-md mx-auto px-8 py-1;
+  @apply rounded-md mx-auto px-8 py-1 dark:bg-gray-900;
 }
 .navbar__left {
   @apply relative flex items-center justify-between h-16;
@@ -104,48 +104,60 @@ export default {
   @apply flex-1 flex items-stretch justify-start pl-6;
 }
 .navbar__items--logo {
-  @apply flex-shrink-0 flex items-center text-white text-xl leading-3 mr-16 uppercase font-bold transform scale-125;
+  @apply flex-shrink-0 flex items-center transform scale-125 mr-16 text-xl leading-3 uppercase font-bold text-white dark:text-indigo-500;
 }
 .navbar__items--list {
   @apply flex space-x-12 items-center justify-items-center justify-center;
 }
+
 .navbar__items--menu {
-  @apply text-white px-3 py-2 font-medium text-base leading-5;
+  @apply px-3 py-2 font-medium text-base leading-5 text-white dark:text-purple-300;
 }
 .navbar__right {
   @apply absolute inset-y-0 right-0 flex items-center pr-0;
 }
 .navbar__user {
-  @apply bg-white flex text-sm rounded-full border border-white focus:outline-none focus:ring-offset-0;
+  @apply flex text-sm rounded-full border border-white focus:outline-none focus:ring-offset-0 bg-white;
 }
 .navbar__user-pic {
   @apply h-10 w-10 rounded-full flex items-center;
 }
 .dropdown {
-  @apply origin-top-right cursor-pointer absolute right-0 mt-2 w-56 rounded shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none border-gray-200 border-2;
+  @apply z-20 origin-top-right cursor-pointer absolute right-0 mt-2 w-56 rounded shadow-lg  ring-1 ring-black ring-opacity-5 focus:outline-none border-gray-200 border-2 bg-white dark:bg-gray-900 dark:border-gray-600;
 }
 .dropdown__item-1 {
-  @apply flex items-center hover:bg-blue-100 border-gray-200 border-b-2;
+  @apply flex items-center hover:bg-indigo-50  dark:hover:bg-gray-800 border-b-2 border-gray-200 dark:border-gray-600;
 }
 .dropdown__item-1--icon {
-  @apply text-gray-600 self-start relative top-4 left-4 w-11;
+  @apply self-start relative top-4 left-4 w-11 text-gray-600 dark:text-indigo-500;
+}
+.dropdown__item-1--svg {
+  @apply w-5 h-5 fill-current;
 }
 .dropdown__profile {
   @apply flex flex-col justify-around pt-2 ml-4;
 }
 .dropdown__profile-title {
-  @apply px-2 py-1 text-sm text-gray-800;
+  @apply px-2 py-1 text-sm text-gray-800 dark:text-gray-100 ;
 }
 .dropdown__profile-sub {
   @apply px-2 pb-2 text-xs font-medium text-gray-400;
 }
 .dropdown__item-2 {
-  @apply flex items-center hover:bg-blue-100;
+  @apply flex items-center hover:bg-indigo-50 dark:hover:bg-gray-800;
 }
 .dropdown__item-2--icon {
-  @apply text-red-500 relative bottom-0 left-4 w-11;
+  @apply custom-text-red relative bottom-0 left-4 w-11;
 }
 .dropdown__logout {
-  @apply block px-4 py-2 text-sm text-red-500;
+  @apply block px-4 py-2 text-sm custom-text-red;
+}
+@layer utilities {
+  .custom-text-red {
+    color: #eb6e6e;
+  }
+  .custom-text-green {
+    color: #54c953;
+  }
 }
 </style>

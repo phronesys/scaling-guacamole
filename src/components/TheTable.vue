@@ -6,13 +6,11 @@
         <table class="table__table">
           <thead class="table__thead">
             <tr>
-              <th scope="col" class="column__title">Employee</th>
+              <th scope="col" class="column__title pl-3">Employee</th>
               <th scope="col" class="column__title">Last login</th>
               <th scope="col" class="column__title">Department</th>
               <th scope="col" class="column__title">Status</th>
-              <th scope="col" class="relative px-6 py-3">
-                <span class="sr-only">Edit</span>
-              </th>
+              
             </tr>
           </thead>
           <tbody class="rows">
@@ -50,27 +48,28 @@ export default {
 
 <style lang="postcss" >
 .component__table {
-  @apply bg-white px-6 pb-10 rounded-md shadow-lg;
+  @apply px-6 pb-10 rounded-md shadow-lg bg-white dark:bg-gray-800;
 }
 .column__title {
-  @apply px-6 pb-3 pt-8 text-left text-sm font-semibold text-gray-500 tracking-wider;
+  @apply px-2 2xl:px-6 pb-3 pt-8 text-left tracking-wider text-xs 2xl:text-sm font-semibold text-gray-500 dark:text-purple-300 dark:bg-gray-800;
 }
 .rows {
-  @apply bg-white divide-y divide-gray-200;
+  @apply divide-y divide-gray-200 bg-white dark:bg-gray-900 dark:divide-gray-600;
 }
-.table__title{
-  @apply pb-4 pt-6 text-gray-600 text-xl;
+.table__title {
+  @apply pb-4 pt-6 text-xl text-gray-600 dark:text-indigo-200;
 }
 .table__container {
-  @apply flex flex-col -my-2 overflow-x-auto -mx-8 py-2 align-middle min-w-full px-6;
+  @apply flex flex-col px-6 -mx-8 py-2 -my-2 min-w-full overflow-x-auto align-middle;
 }
 .table__content {
-  @apply overflow-hidden border border-gray-200 rounded-lg sm:rounded-none;
+  @apply overflow-hidden border rounded-lg border-gray-200 dark:border-gray-600;
 }
 .table__table {
-  @apply min-w-full divide-y divide-gray-200;
+  @apply min-w-full divide-y divide-gray-200 dark:divide-gray-600;
 }
 .table__thead {
-  @apply bg-white leading-10 max-h-10;
+  @apply leading-10 max-h-10 bg-white dark:bg-black;
 }
+
 </style>

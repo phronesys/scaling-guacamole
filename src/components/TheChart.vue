@@ -68,13 +68,13 @@ export default {
 </script>
 <style lang="postcss">
 .chart-box {
-  @apply bg-white rounded-md pb-8 shadow-lg;
+  @apply 2xl:pb-4 rounded-md shadow-lg bg-white dark:bg-gray-900;
 }
 .chart__text {
-  @apply relative top-6 left-6 mb-16;
+  @apply relative top-6 left-6 mb-3 2xl:mb-16;
 }
 .chart__title {
-  @apply text-gray-600 text-xl;
+  @apply text-xl text-gray-600 dark:text-indigo-200;
 }
 .chart__pie {
   @apply flex items-center justify-center flex-grow flex-shrink rounded-md pb-2;

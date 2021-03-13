@@ -1,6 +1,6 @@
-# Test Frontend Junior Developer
+# My solution to videsk's development test
 
-This is a test that we create to recruitment process of frontend junior developer for [Videsk](https://videsk.io).
+A test provided by [Videsk](https://videsk.io), where I applied to the position of Frontend Junior Developer. 
 
 ```
 Follow the deadlines and rules where you got this link.

@@ -3,10 +3,12 @@
     <td class="table__whitespace">
       <div class="table__employee">
         <div class="table__employee-pic">
+          <!-- Using an array to request dynamically a different img to unsplash API -->
+          <!-- Otherwise would only call one img for all the requests -->
+          <!-- Also, this was easier than implementing another mirage namespace -->
           <img
             class="table__employee-img"
-            :src="picture"
-            alt=""
+            :src="'https://source.unsplash.com/350x350/?' + avatar[index]"
           >
         </div>
         <div class="ml-4">
@@ -59,6 +61,12 @@
 <script>
 export default {
   props: {
+    index: {
+      type: Number,
+      default: function() {
+        return 0;
+      }
+    },
     department: {
       type: String,
       default: function () {
@@ -91,14 +99,14 @@ export default {
         };
       },
     },
-    picture: {
-      type: String,
-      default: function () {
-        return {
-          message: "",
-        };
-      },
-    },
+    // picture: {
+    //   type: String,
+    //   default: function () {
+    //     return {
+    //       message: "",
+    //     };
+    //   },
+    // },
     sessions: {
       type: Array,
       default: function () {
@@ -113,6 +121,11 @@ export default {
         return false;
       },
     },
+  },
+  data() {
+    return {
+      avatar: ["avatar", "profile", "me", "picture", "selfie"]
+    }
   },
   computed: {
     userName() {
@@ -130,6 +143,9 @@ export default {
     timeAgo() {
       return this.dateDifference();
     },
+    // picUrl(){
+    //   return this.picture;
+    // }
   },
   methods: {
     maxNumberIn(date) {
@@ -181,6 +197,7 @@ export default {
         return Math.round(diff / ms_Yr) + " years ago";
       }
     },
+    // A helper function to build the desired date format
     getFullMonth(monthIndex) {
       const months = [
         "January",
@@ -199,6 +216,7 @@ export default {
       return months[monthIndex];
     },
     formatDate() {
+      // search for the latest login date
       const lastDate = this.maxNumberIn(this.sessions);
 
       const monthIndex = new Date(lastDate).getMonth();
@@ -239,8 +257,9 @@ export default {
 .table__arrow-svg {
   @apply flex items-center justify-center;
 }
-
+/* responsiveness for 1366px to 1920px */
 /*  without this custom-text-xxs won't get override by 2xl:text-sm */
+/* I think this isn't the best practice, but I leave it here for reference */
 .override-text-to-sm {
   @apply 2xl:text-sm !important;
 }
@@ -257,8 +276,6 @@ export default {
       font-size: 0.7rem;
       line-height: 0.8rem;
     }
-  }
-  @variants dark {
   }
   .custom-text-red {
     color: #f03738;

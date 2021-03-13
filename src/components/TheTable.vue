@@ -37,13 +37,13 @@
           <tbody class="rows">
             <template v-if="users.users !== undefined">
               <table-user
-                v-for="user in users.users"
+                v-for="(user, index) in users.users"
                 :key="user.id"
+                :index="index"
                 :department="user.department"
                 :email="user.email"
                 :first-name="user.first_name"
                 :last-name="user.last_name"
-                :picture="user.profile_img"
                 :sessions="user.sessions"
                 :status="user.status"
               />
@@ -65,9 +65,7 @@ export default {
     users: {
       type: Object,
       default: function () {
-        return {
-          message: "",
-        };
+        return {};
       },
     },
   },

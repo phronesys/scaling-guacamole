@@ -188,7 +188,6 @@ export default {
       return this.timeDifference(lastLogin);
     },
     // https://www.geeksforgeeks.org/javascript-date-gettime-method/
-    // isn't the most accurate, but here does the job well
     timeDifference(date) {
       let today = new Date().getTime();
       var ms_Min = 60 * 1000; // milliseconds in Minute

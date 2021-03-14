@@ -36,19 +36,23 @@ export default {
   },
   data() {
     return {
-      uwu: "",
       users: {},
       reports: {},
     };
   },
   async mounted() {
-    // Users
-    const userResponse = await fetch("/api/users");
-    this.users = await userResponse.json();
-
-    // Reports
-    const reportResponse = await fetch("/api/reports");
-    this.reports = await reportResponse.json();
+    this.users = await this.fetchUsers();
+    this.reports = await this.fetchReports();
+  },
+  methods: {
+    async fetchUsers() {
+      const userResponse = await fetch("/api/users");
+      return userResponse.json();
+    },
+    async fetchReports() {
+      const reportResponse = await fetch("/api/reports");
+      return reportResponse.json();
+    },
   },
 };
 </script>

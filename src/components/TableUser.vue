@@ -5,17 +5,24 @@
         <div class="table__employee-pic">
           <!-- Using an array to request dynamically a different img to unsplash API -->
           <!-- Otherwise would only call one img for all the requests -->
-          <!-- Also, this was easier than implementing another mirage namespace -->
+          <!-- Also, this was easier than implementing another mirage namespace, maybe slower -->
           <img
+            id="image"
             class="table__employee-img"
             :src="'https://source.unsplash.com/350x350/?' + avatar[index]"
           >
         </div>
         <div class="ml-4">
-          <div class="font-medium custom-text--1">
+          <div
+            id="username"
+            class="font-medium custom-text--1"
+          >
             {{ userName }}
           </div>
-          <div class="custom-text--2">
+          <div
+            id="email"
+            class="custom-text--2"
+          >
             {{ email }}
           </div>
         </div>
@@ -23,18 +30,28 @@
     </td>
     <!-- Date reference https://css-tricks.com/everything-you-need-to-know-about-date-in-javascript/ -->
     <td class="table__whitespace">
-      <div class="custom-text--1">
+      <div
+        id="lastlogin"
+        class="custom-text--1"
+      >
         {{ lastLogin }}
       </div>
-      <div class="custom-text--2">
+      <div
+        id="timeago"
+        class="custom-text--2"
+      >
         {{ timeAgo }}
       </div>
     </td>
-    <td class="table__whitespace custom-text--1">
+    <td
+      id="department"
+      class="table__whitespace custom-text--1"
+    >
       {{ department }}
     </td>
     <td class="table__whitespace">
       <span
+        id="textstatus"
         class="table__employee-status"
         :class="userStatus"
       >
@@ -63,41 +80,46 @@ export default {
   props: {
     index: {
       type: Number,
-      default: function() {
+      default: function () {
         return 0;
-      }
+      },
+      required: false,
     },
     department: {
       type: String,
       default: function () {
         return {
-          message: "",
+          message: "no department",
         };
       },
+      required: false,
     },
     email: {
       type: String,
       default: function () {
         return {
-          message: "",
+          message: "no email",
         };
       },
+      required: false,
     },
     firstName: {
       type: String,
       default: function () {
         return {
-          message: "",
+          message: "firstname",
         };
       },
+      required: false,
     },
     lastName: {
       type: String,
       default: function () {
         return {
-          message: "",
+          message: "lastname",
         };
       },
+      required: false,
     },
     // picture: {
     //   type: String,
@@ -110,22 +132,22 @@ export default {
     sessions: {
       type: Array,
       default: function () {
-        return {
-          message: "",
-        };
+        return [];
       },
+      required: false,
     },
     status: {
       type: Boolean,
       default: function () {
         return false;
       },
+      required: false,
     },
   },
   data() {
     return {
-      avatar: ["avatar", "profile", "me", "picture", "selfie"]
-    }
+      avatar: ["avatar", "profile", "me", "picture", "selfie"],
+    };
   },
   computed: {
     userName() {
@@ -148,6 +170,7 @@ export default {
     // }
   },
   methods: {
+    // helper func to find max date on miliseconds
     maxNumberIn(date) {
       let array = [
         new Date(date[0]).getTime(),
@@ -221,7 +244,7 @@ export default {
 
       const monthIndex = new Date(lastDate).getMonth();
       const date = {
-        day: new Date(lastDate).getDay(),
+        day: new Date(lastDate).getDate(),
         year: new Date(lastDate).getFullYear(),
         month: this.getFullMonth(monthIndex),
       };

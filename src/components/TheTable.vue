@@ -35,7 +35,10 @@
             </tr>
           </thead>
           <tbody class="rows">
-            <template v-if="users.users !== undefined" id="user-render">
+            <template
+              v-if="users.users !== undefined"
+              id="user-render"
+            >
               <table-user
                 v-for="(user, index) in users.users"
                 :key="user.id"

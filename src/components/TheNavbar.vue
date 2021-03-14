@@ -59,6 +59,7 @@
             <!-- the dropdown -->
             <div
               v-if="isDropdownOpen"
+              id="dropdown"
               class="dropdown"
               role="menu"
               aria-orientation="vertical"

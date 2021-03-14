@@ -31,7 +31,7 @@ test('table-user should be rendered after 1 second', () => {
     expect(wrapper.wm.users.exists()).toBe(true);
     expect(wrapper.find('#user-render').exists()).toBe(true);
     expect(wrapper.find('table-user').exists()).toBe(true);
-  }, 2000)
+  }, 1000)
 })
 // both "expect" below throws errors outside of setTimeout
 // this means props aren't being pass right away

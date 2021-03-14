@@ -3,6 +3,10 @@
     <h1>
       {{ msg }}
     </h1>
+    <button @click="count++">
+      Add up
+    </button>
+    <p>Total count: {{ count }}</p>
   </div>
 </template>
 
@@ -13,9 +17,14 @@ export default {
       type: String,
       default: function () {
         return {
-          message: ""
-        }
-      }
+          message: "",
+        };
+      },
+    },
+  },
+  data(){
+    return {
+      count: 0
     }
   }
 };

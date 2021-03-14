@@ -3,8 +3,9 @@
     <!-- click out to close the dropdown -->
     <div
       v-if="isDropdownOpen"
-      class="z-10 fixed w-full h-full left-0 top-0"
-      @click="isDropdownOpen = false"
+      id="backdrop"
+      class="backdrop"
+      @click="dropdownFalse()"
     />
     <nav class="navbar">
       <!-- navbar flex items -->
@@ -46,7 +47,7 @@
               class="navbar__user"
               :aria-expanded="isDropdownOpen"
               aria-haspopup="true"
-              @click="isDropdownOpen = !isDropdownOpen"
+              @click="dropdownToggle()"
             >
               <img
                 class="navbar__user-pic"
@@ -90,9 +91,7 @@
               >
                 <span class="dropdown__item-2--icon">
                   <svg class="w-5 h-5 fill-current">
-                    <use
-                      xlink:href="../assets/symbol-defs.svg#icon-logout"
-                    />
+                    <use xlink:href="../assets/symbol-defs.svg#icon-logout" />
                   </svg>
                 </span>
                 <a
@@ -115,10 +114,21 @@ export default {
       isDropdownOpen: false,
     };
   },
+  methods: {
+    dropdownFalse() {
+      this.isDropdownOpen = false;
+    },
+    dropdownToggle(){
+      this.isDropdownOpen = !this.isDropdownOpen;
+    }
+  },
 };
 </script>
 
 <style lang="postcss">
+.backdrop {
+  @apply z-10 fixed w-full h-full left-0 top-0;
+}
 .navbar {
   background-color: #1e1add;
   @apply rounded-md mx-auto px-8 py-1 dark:bg-gray-900;
@@ -164,7 +174,7 @@ export default {
   @apply flex flex-col justify-around pt-2 ml-4;
 }
 .dropdown__profile-title {
-  @apply px-2 py-1 text-sm text-gray-800 dark:text-gray-100 ;
+  @apply px-2 py-1 text-sm text-gray-800 dark:text-gray-100;
 }
 .dropdown__profile-sub {
   @apply px-2 pb-2 text-xs font-medium text-gray-400;

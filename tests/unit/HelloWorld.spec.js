@@ -1,8 +1,8 @@
 import { mount } from '@vue/test-utils';
-import HelloWolrd from '@/components/HelloWorld';
+import HelloWorld from '@/components/HelloWorld';
 
 test('display message', () => {
-  const wrapper = mount(HelloWolrd, {
+  const wrapper = mount(HelloWorld, {
     // inside this object we can pass data to the test
     propsData: {
       msg: "hello world"
@@ -11,3 +11,16 @@ test('display message', () => {
 
   expect(wrapper.text()).toContain('hello world')
 })
+
+// test("increment count on click", async () => {
+//   const wrapper = mount(HelloWorld);
+//   const button = wrapper.find('button');
+//   const text = wrapper.find('p');
+
+//   // .text() is what is inside the p tag
+//   expect(text.text()).toContain('Total count: 0');
+
+//   await button.trigger('click');
+  
+//   expect(text.text()).toContain('Total count: 1');
+// })

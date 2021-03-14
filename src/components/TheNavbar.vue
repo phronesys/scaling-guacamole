@@ -4,6 +4,7 @@
     <div
       v-if="isDropdownOpen"
       id="backdrop"
+      ref="backdrop"
       class="backdrop"
       @click="dropdownFalse()"
     />

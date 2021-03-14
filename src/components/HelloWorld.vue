@@ -12,19 +12,11 @@
 
 <script>
 export default {
-  props: {
-    msg: {
-      type: String,
-      default: function () {
-        return {
-          message: "",
-        };
-      },
-    },
-  },
+ 
   data(){
     return {
-      count: 0
+      count: 0,
+      msg:"hello world",
     }
   }
 };

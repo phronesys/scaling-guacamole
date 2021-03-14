@@ -1,7 +1,9 @@
 # My solution to videsk's development test
-**test**
 
-A test provided by [Videsk](https://videsk.io), where I applied to the position of Frontend Junior Developer. 
+### I added dark mode and some unit tests, I hope you like it. :bowtie:
+
+
+## A test provided by [Videsk](https://videsk.io), where I applied to the position of Frontend Junior Developer. 
 
 ```
 Follow the deadlines and rules where you got this link.

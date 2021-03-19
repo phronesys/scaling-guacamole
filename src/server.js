@@ -1,7 +1,7 @@
 import faker from "faker";
 import { createServer, Model, Factory } from "miragejs";
 
-export function makeServer({ environment = "production" } = {}) {
+export function makeServer({ environment = "development" } = {}) {
   return createServer({
     environment,
 

@@ -26,6 +26,7 @@
 import TheNavbar from "./components/TheNavbar";
 import TheChart from "./components/TheChart";
 import TheTable from "./components/TheTable";
+import path from 'path';
 
 export default {
   name: "App",
@@ -46,11 +47,13 @@ export default {
   },
   methods: {
     async fetchUsers() {
-      const userResponse = await fetch("/api/users");
+      const __dirname = path.resolve();
+      const userResponse = await fetch(path.join(__dirname, "api", "users"));
       return userResponse.json();
     },
     async fetchReports() {
-      const reportResponse = await fetch("/api/reports");
+      const __dirname = path.resolve();
+      const reportResponse = await fetch(path.join(__dirname, "api", "reports"));
       return reportResponse.json();
     },
   },
